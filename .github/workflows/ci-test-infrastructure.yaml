@@ -23,8 +23,3 @@ jobs:
       
       - name: Summarize tests results
         uses: jeantessier/code-coverage-summary-action@v1
-        with:
-          filenames: |
-            solver/build/reports/jacoco/test/jacocoTestReport.xml
-            generator/build/reports/jacoco/test/jacocoTestReport.xml
-            test-shared/build/reports/jacoco/test/jacocoTestReport.xml
