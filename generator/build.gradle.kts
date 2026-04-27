@@ -19,11 +19,18 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
-    finalizedBy(tasks.jacocoTestReport)
 }
 
 tasks.jacocoTestReport{
-    dependsOn(tasks.test)
+    dependsOn(":test-shared:test")
+
+    val testSharedExec = project(":test-shared").layout.buildDirectory.dir("jacoco").map { it.file("test.exec").asFile }
+    val classData = layout.buildDirectory.dir("classes/kotlin/main").map{ it.asFile }
+
+    classDirectories.setFrom(classData)
+    sourceDirectories.setFrom(files("src/main/kotlin", "src/main/java"))
+    executionData.setFrom(testSharedExec)
+
     reports{
         xml.required.set(true)
         html.required.set(true)
