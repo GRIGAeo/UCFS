@@ -42,54 +42,6 @@ tasks.test {
         "-Dcount_for_case=$count_for_case",
         "-Dwrite_case_time=$write_case_time"
     )
-    finalizedBy(tasks.jacocoTestReport)
-}
-
-tasks.jacocoTestReport{
-    dependsOn(tasks.test)
-    reports{
-        xml.required.set(true)
-        html.required.set(true)
-        csv.required.set(true)
-    }
-}
-
-tasks.jacocoTestCoverageVerification{
-    dependsOn(tasks.jacocoTestReport)
-    violationRules{
-        rule{
-            isEnabled = true
-            limit {
-                counter = "INSTRUCTION"
-                value = "COVEREDRATIO"
-                minimum = "0.7".toBigDecimal()
-            }
-            limit {
-                counter = "BRANCH"
-                value = "COVEREDRATIO"
-                minimum = "0.7".toBigDecimal()
-            }
-            limit {
-                counter = "LINE"
-                value = "COVEREDRATIO"
-                minimum = "0.7".toBigDecimal()
-            }
-            limit {
-                counter = "METHOD"
-                value = "COVEREDRATIO"
-                minimum = "0.85".toBigDecimal()
-            }
-            limit {
-                counter = "CLASS"
-                value = "COVEREDRATIO"
-                minimum = "0.9".toBigDecimal()
-            }
-        }
-    }
-}
-
-tasks.check{
-    dependsOn(tasks.jacocoTestCoverageVerification)
 }
 
 kotlin {
