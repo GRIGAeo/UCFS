@@ -25,9 +25,10 @@ tasks.jacocoTestReport{
     dependsOn(":test-shared:test")
 
     val testSharedExec = project(":test-shared").layout.buildDirectory.dir("jacoco").map { it.file("test.exec").asFile }
-    val classData = layout.buildDirectory.dir("classes/kotlin/main").map{ it.asFile }
+    val kotlinClassData = layout.buildDirectory.dir("classes/kotlin/main").map{ it.asFile }
+    val lavaClassData = layout.buildDirectory.dir("classes/java/main").map{ it.asFile }
 
-    classDirectories.setFrom(classData)
+    classDirectories.setFrom(files(kotlinClassData, lavaClassData))
     sourceDirectories.setFrom(files("src/main/kotlin", "src/main/java"))
     executionData.setFrom(testSharedExec)
 
