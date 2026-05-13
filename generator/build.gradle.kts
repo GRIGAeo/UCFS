@@ -1,6 +1,20 @@
 plugins {
     kotlin("jvm") version "1.9.20"
     jacoco
+    id("maven-publish")
+}
+
+publishing{
+    repositories{
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/FormalLanguageConstrainedPathQuerying/UCFS")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
 }
 
 jacoco{
@@ -26,10 +40,10 @@ tasks.jacocoTestReport{
 
     val testSharedExec = project(":test-shared").layout.buildDirectory.dir("jacoco").map { it.file("test.exec").asFile }
     val kotlinClassData = layout.buildDirectory.dir("classes/kotlin/main").map{ it.asFile }
-    val lavaClassData = layout.buildDirectory.dir("classes/java/main").map{ it.asFile }
+    val javaClassData = layout.buildDirectory.dir("classes/java/main").map{ it.asFile }
 
-    classDirectories.setFrom(files(kotlinClassData, lavaClassData))
-    sourceDirectories.setFrom(files("src/main/kotlin", "src/main/java"))
+    classDirectories.setFrom(files(kotlinClassData, javaClassData))
+    sourceDirectories.setFrom(files("src/main/java", "src/main/kotlin"))
     executionData.setFrom(testSharedExec)
 
     reports{
