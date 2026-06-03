@@ -3,20 +3,6 @@ plugins {
     kotlin("jvm") version "1.9.20"
     kotlin("plugin.allopen") version "1.9.20"
     jacoco
-    id("maven-publish")
-}
-
-publishing{
-    repositories{
-        maven{
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/FormalLanguageConstrainedPathQuerying/UCFS")
-            credentials{
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
-            }
-        }
-    }
 }
 
 jacoco{
