@@ -1,12 +1,21 @@
 plugins{
     java
-    id("com.github.johnrengelman.shadow") version "8.1.1"
     id("maven-publish")
 }
 
 dependencies{
-    implementation(project(":solver"))
-    implementation(project(":generator"))
+    implementation("org.antlr:antlr4:4.13.1")
+    implementation("io.github.oshai:kotlin-logging-jvm:5.1.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.5")
+    implementation("org.slf4j:slf4j-api:2.0.17")
+    implementation("ch.qos.logback:logback-classic:1.5.18")
+    implementation("com.squareup:kotlinpoet:1.16.0")
+}
+
+tasks.jar {
+    from(project(":solver").sourceSets["main"].output)
+    from(project(":generator").sourceSets["main"].output)
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 repositories{
@@ -15,12 +24,13 @@ repositories{
 }
 
 group = "org.pl"
-version = "1.0.0"
+version = "unspecified"
 
 publishing {
     publications {
         create<MavenPublication>("maven") {
-            artifact(tasks.shadowJar)
+            artifactId = "UCFS"
+            from(components["java"])
         }
     }
     repositories {
