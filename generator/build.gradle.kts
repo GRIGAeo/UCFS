@@ -43,6 +43,16 @@ tasks.jacocoTestReport{
 
 tasks.jacocoTestCoverageVerification{
     dependsOn(tasks.jacocoTestReport)
+
+    val localExec = layout.buildDirectory.dir("jacoco").map { it.file("test.exec").asFile }
+    val testSharedExec = project(":test-shared").layout.buildDirectory.dir("jacoco").map { it.file("test.exec").asFile }
+    val classData1 = layout.buildDirectory.dir("classes/java/main").map{ it.asFile }
+    val classData2 = layout.buildDirectory.dir("classes/kotlin/main").map{ it.asFile }
+
+    classDirectories.setFrom(files(classData1, classData2))
+    sourceDirectories.setFrom(files("src/main/java", "src/main/kotlin"))
+    executionData.setFrom(files(localExec, testSharedExec))
+
     violationRules{
         rule{
             isEnabled = true
