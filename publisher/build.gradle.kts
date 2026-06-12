@@ -24,7 +24,7 @@ repositories{
 }
 
 group = "org.pl"
-version = "unspecified"
+version = "0.1.0"
 
 publishing {
     publications {
