@@ -20,6 +20,10 @@ jobs:
         uses: gradle/actions/setup-gradle@v6
       - name: Run tests
         run: ./gradlew --no-daemon solver:jacocoTestCoverageVerification generator:jacocoTestCoverageVerification
-      
+
+      - name: Prepare JaCoCo files for summary action
+        run: |
+          cp solver/build/reports/jacoco/test/jacocoTestReport.xml solver/build/reports/jacoco/testCodeCoverageReport.xml
+          cp generator/build/reports/jacoco/test/jacocoTestReport.xml generator/build/reports/jacoco/testCodeCoverageReport.xml
       - name: Summarize tests results
         uses: jeantessier/code-coverage-summary-action@v1
