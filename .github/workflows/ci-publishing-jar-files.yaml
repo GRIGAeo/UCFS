@@ -23,4 +23,4 @@ jobs:
       - name: Publish package
         run: ./gradlew :publisher:publish --stacktrace
         env:
-          GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
