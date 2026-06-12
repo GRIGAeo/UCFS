@@ -55,32 +55,31 @@ tasks.jacocoTestCoverageVerification{
 
     violationRules{
         rule{
-            // Original: isEnabled=true INSTRUCTION=0.95 BRANCH=0.80 LINE=0.80 METHOD=0.85 CLASS=0.90
-            isEnabled = false
+            isEnabled = true
             limit{
                 counter = "INSTRUCTION"
                 value = "COVEREDRATIO"
-                minimum = "0.0".toBigDecimal()
+                minimum = "0.95".toBigDecimal()
             }
             limit{
                 counter = "BRANCH"
                 value = "COVEREDRATIO"
-                minimum = "0.0".toBigDecimal()
+                minimum = "0.8".toBigDecimal()
             }
             limit{
                 counter = "LINE"
                 value = "COVEREDRATIO"
-                minimum = "0.0".toBigDecimal()
+                minimum = "0.8".toBigDecimal()
             }
             limit{
                 counter = "METHOD"
                 value = "COVEREDRATIO"
-                minimum = "0.0".toBigDecimal()
+                minimum = "0.85".toBigDecimal()
             }
             limit {
                 counter = "CLASS"
                 value = "COVEREDRATIO"
-                minimum = "0.0".toBigDecimal()
+                minimum = "0.9".toBigDecimal()
             }
         }
     }
