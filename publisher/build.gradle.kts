@@ -24,12 +24,12 @@ repositories{
 }
 
 group = "org.pl"
-version = "0.1.0"
+version = "0.2.0"
 
 publishing {
     publications {
         create<MavenPublication>("maven") {
-            artifactId = "UCFS"
+            artifactId = "ucfs"
             from(components["java"])
         }
     }
