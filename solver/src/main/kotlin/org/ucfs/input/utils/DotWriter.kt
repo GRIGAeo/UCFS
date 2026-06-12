@@ -22,8 +22,7 @@ class DotWriter {
             for (edge in edges) {
                 val to = edge.targetVertex
                 val label = edge.label.terminal.toString()
-                builder.append("    $from $connector $to [label = $label];\n")
-            }
+                builder.append("    $from $connector $to [label = $label];\n")            }
         }
 
         builder.append("}")
