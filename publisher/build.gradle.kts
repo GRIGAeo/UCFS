@@ -15,7 +15,7 @@ dependencies{
 tasks.jar {
     from(project(":solver").sourceSets["main"].output)
     from(project(":generator").sourceSets["main"].output)
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    duplicatesStrategy = DuplicatesStrategy.WARN
 }
 
 repositories{
@@ -24,7 +24,7 @@ repositories{
 }
 
 group = "org.pl"
-version = "0.0.111111"
+version = "1.0.0"
 
 publishing {
     publications {
@@ -36,7 +36,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/GRIGAeo/UCFS")
+            url = uri("https://maven.pkg.github.com/FormalLanguageConstrainedPathQuerying/UCFS")
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")

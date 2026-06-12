@@ -18,7 +18,10 @@ jobs:
           java-version: '11'
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v6
+      - name: Run tests
+        run: ./gradlew solver:test generator:test
       - name: Publish package
         run: ./gradlew :publisher:publish
         env:
-          GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Для форка: замените GITHUB_TOKEN на PUBLISH_TOKEN (PAT с scope write:packages)
