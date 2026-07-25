@@ -5,4 +5,3 @@ rootProject.name = "ucfs"
 include("solver")
 include("generator")
 include("test-shared")
-include("publisher")
