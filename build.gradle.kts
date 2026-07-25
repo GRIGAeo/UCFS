@@ -77,6 +77,11 @@ group = "org.ucfs"
 
 version = scmVersion.version
 
+subprojects {
+    version = rootProject.version
+    group = rootProject.group
+}
+
 evaluationDependsOnChildren()
 
 publishing {
@@ -88,6 +93,10 @@ publishing {
         create<MavenPublication>("generator") {
             artifactId = "generator"
             from(project(":generator").components.getByName("java"))
+            versionMapping {
+                usage("java-api") { fromResolutionOf("runtimeClasspath") }
+                usage("java-runtime") { fromResolutionResult() }
+            }
         }
     }
     repositories {
