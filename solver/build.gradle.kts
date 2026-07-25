@@ -2,6 +2,7 @@ plugins {
     java
     kotlin("jvm")
     kotlin("plugin.allopen")
+    id("jacoco")
 }
 
 
