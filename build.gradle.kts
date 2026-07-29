@@ -95,7 +95,7 @@ publishing {
             from(project(":generator").components.getByName("java"))
             versionMapping {
                 usage("java-api") { fromResolutionOf("runtimeClasspath") }
-                usage("java-runtime") { fromRggregation")esolutionResult() }
+                usage("java-runtime") { fromResolutionResult() }            
             }
         }
     }
