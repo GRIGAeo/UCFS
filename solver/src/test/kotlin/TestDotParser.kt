@@ -9,7 +9,7 @@ import java.nio.file.Path
 import kotlin.test.assertEquals
 
 class TestDotParser {
-    @Disabled("DotWriter drops quotes around label values during serialization")
+//    @Disabled("DotWriter drops quotes around label values during serialization")
     @Test
     fun testParser(){
         val testCasesFolder = File(Path.of("src", "test", "resources", "dotParserTest").toUri())
