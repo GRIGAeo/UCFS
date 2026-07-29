@@ -95,14 +95,14 @@ publishing {
             from(project(":generator").components.getByName("java"))
             versionMapping {
                 usage("java-api") { fromResolutionOf("runtimeClasspath") }
-                usage("java-runtime") { fromResolutionResult() }
+                usage("java-runtime") { fromRggregation")esolutionResult() }
             }
         }
     }
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/FormalLanguageConstrainedPathQuerying/UCFS")
+            url = uri("https://maven.pkg.github.com/GRIGAeo/UCFS")
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")
